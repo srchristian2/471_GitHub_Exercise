@@ -199,6 +199,17 @@ printhelp(BSTNode<Key, E>* root, int level) const {
   printhelp(root->right(), level+1);  // Do right subtree
 }
 
+
+//Print post order
+template <typename Key, typename E>
+void BST<Key, E>::
+printPostOrder(BSTNode<Key, E>* root, int level) const {
+    if (root == NULL) return;
+    printPostOrder(root->left(), level + 1);
+    printPostOrder(root->right(), level + 1);
+    visit(root);
+};
+
 template <typename Key, typename E>
 void BST<Key, E>::
 printPreOrder(BSTNode<Key, E>* root, int level) const {
@@ -207,3 +218,4 @@ printPreOrder(BSTNode<Key, E>* root, int level) const {
   printhelp(root->left(), level+1);   // Do left subtree
   printhelp(root->right(), level+1);  // Do right subtree
 }
+
